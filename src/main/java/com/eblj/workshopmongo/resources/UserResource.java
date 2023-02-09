@@ -18,10 +18,7 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
-	/*
-	 O ResponseEntity é um objeto que encapsula uma estrutura necessarias para retornar
-	 respostas http(formatado)
-	 */
+	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll(){
 		

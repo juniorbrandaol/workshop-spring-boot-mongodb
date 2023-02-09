@@ -1,10 +1,12 @@
 package com.eblj.workshopmongo.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
+
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Document(collection="user")
 public class User implements Serializable {
@@ -20,6 +22,7 @@ public class User implements Serializable {
 	}
 
 	public User(String id, String name, String email) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -45,13 +48,17 @@ public class User implements Serializable {
 		return email;
 	}
 
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -63,7 +70,12 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 	
 }

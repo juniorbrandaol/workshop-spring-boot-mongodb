@@ -10,9 +10,7 @@ import com.eblj.workshopmongo.repository.UserRepository;
 
 @Service
 public class UserService {
-	/*
-	 * instancia automaticamento um objeto nesta classe de serviço
-	 */
+	
 	@Autowired
 	private UserRepository repo;
 	
